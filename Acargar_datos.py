@@ -21,4 +21,4 @@ def cargar_datos(ruta_csv):
 
 # Ejecución
 if __name__ == "__main__":
-    X_train, X_test, y_train, y_test = cargar_datos(r'C:/Users/josue/Desktop/Pro-EntrenamientoModeloXGboost-despliegue/xgboost_ready_data_one_month.csv')
+    X_train, X_test, y_train, y_test = cargar_datos(r'C:/Users/josue/Desktop/XGboostLocal/xgboost_ready_data_month.csv')

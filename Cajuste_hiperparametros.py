@@ -5,7 +5,7 @@ from Acargar_datos import cargar_datos
 from sklearn.model_selection import RandomizedSearchCV
 import numpy as np
 # Cargar los datos
-X_train, X_test, y_train, y_test = cargar_datos(r'C:/Users/josue/Desktop/Pro-EntrenamientoModeloXGboost-despliegue/xgboost_ready_data_one_month.csv')
+X_train, X_test, y_train, y_test = cargar_datos(r'C:/Users/josue/Desktop/XGboostLocal/xgboost_ready_data_month.csv')
 
 # Crear el modelo base
 xgb_model = xgb.XGBRegressor(objective='reg:squarederror', random_state=42)
