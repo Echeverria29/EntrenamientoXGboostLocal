@@ -1,0 +1,1 @@
+pip install xgboost pandas boto3 scikit-learn
