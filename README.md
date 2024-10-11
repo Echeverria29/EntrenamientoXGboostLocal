@@ -29,19 +29,19 @@ Uso del Modelo
 Este modelo puede ser implementado en un entorno de producción donde se realicen monitoreos continuos. Al recibir datos en tiempo real, puede predecir y alertar sobre posibles eventos críticos, permitiendo a los ingenieros tomar decisiones informadas y ajustadas a las predicciones.
 
 # Resultados
-Error cuadrático medio (MSE): 124.32082997220324
-Coeficiente de determinación (R2 Score): 0.9661331435896365
-MSE optimizado: 124.32082997220324, R2 optimizado: 0.9661331435896365
+Error cuadrático medio (MSE): 217.73657880850624
+Coeficiente de determinación (R2 Score): 0.9406836281338827
+MSE optimizado: 217.73657880850624, R2 optimizado: 0.9406836281338827
 
-Error Cuadrático Medio (MSE): 124.32
+Error Cuadrático Medio (MSE): 217.53
 MSE mide el promedio del cuadrado de los errores, es decir, cuánto se desvía en promedio el valor predicho del valor real.
-En este caso, un MSE de 124.32 significa que, en promedio, las predicciones del modelo tienen un error cuadrado de aproximadamente 124.32 unidades con respecto a los valores reales de la presión máxima (P_Max).
+En este caso, un MSE de 217.53 significa que, en promedio, las predicciones del modelo tienen un error cuadrado de aproximadamente 217.53 unidades con respecto a los valores reales de la presión máxima (P_Max).
 Este valor es más realista que el MSE extremadamente bajo que tenías antes, lo cual es un buen indicador de que el modelo ahora está generalizando mejor con los datos variados.
 
-Coeficiente de determinación (R² Score): 0.966
+Coeficiente de determinación (R² Score): 0.94
 El R² Score mide qué tan bien el modelo está explicando la variabilidad de los datos. El valor máximo es 1, lo que indica una predicción perfecta.
-Un R² de 0.966 indica que el modelo está explicando aproximadamente el 96.6% de la variabilidad en los datos. Esto significa que el modelo está capturando la mayor parte de la relación entre las variables predictoras y la variable objetivo (presión máxima), lo que es un gran resultado.
+Un R² de 0.940 indica que el modelo está explicando aproximadamente el 94% de la variabilidad en los datos. Esto significa que el modelo está capturando la mayor parte de la relación entre las variables predictoras y la variable objetivo (presión máxima), lo que es un gran resultado.
 
 #  ¿Qué significa en términos simples?
-Muy buen ajuste: Un R² de 0.966 es excelente, lo que significa que el modelo está prediciendo con mucha precisión, aunque no de manera perfecta (como era el caso antes de agregar la variabilidad).
+Muy buen ajuste: Un R² de 0.940 es excelente, lo que significa que el modelo está prediciendo con mucha precisión, aunque no de manera perfecta .
 MSE razonable: El MSE de 124.32 indica que los errores de predicción son pequeños en promedio, lo que muestra que el modelo está haciendo un buen trabajo con los datos variados.

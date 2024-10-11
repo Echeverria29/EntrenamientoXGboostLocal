@@ -4,7 +4,7 @@ from utils import evaluar_modelo
 from Acargar_datos import cargar_datos
 
 # Cargar los datos
-X_train, X_test, y_train, y_test = cargar_datos(r'C:/Users/josue/Desktop/XGboostLocal/xgboost_ready_data_month.csv')
+X_train, X_test, y_train, y_test = cargar_datos(r'C:/Users/josue/Desktop/EntrenamientoXGboostLocal/xgboost_ready_data_month.csv')
 
 # Crear y entrenar el modelo
 xgb_model = xgb.XGBRegressor(objective='reg:squarederror', random_state=42)
