@@ -1,47 +1,117 @@
-# Proyecto de Modelo Predictivo con XGBoost
-Descripción del Proyecto
-Este proyecto utiliza XGBoost para entrenar un modelo predictivo con el objetivo de anticipar situaciones específicas relacionadas con el comportamiento de un sistema basado en sensores de datos operativos. El modelo predice eventos relevantes basados en múltiples variables operativas que se registran diariamente.
+# Proyecto de Entrenamiento de Modelo XGBoost con Optimización de Hiperparámetros
+Este proyecto tiene como objetivo entrenar un modelo de XGBoost utilizando datos de sensores (velocidad, presión, etc.), optimizar los hiperparámetros mediante RandomizedSearchCV y evaluar su rendimiento tanto antes como después de la optimización. Además, se guardará y cargará el modelo para su reutilización en futuras predicciones.
 
-# Objetivo del Modelo
-El modelo se ha desarrollado para predecir situaciones críticas que puedan ocurrir en un sistema monitoreado, como el comportamiento anómalo de ciertas variables, ayudando a los operadores a tomar decisiones en tiempo real. Por ejemplo, en sistemas de monitoreo de pozos, se puede predecir problemas como el arenamiento, basándose en variables como la velocidad, la presión, y la carga.
+# Contenido
+Requisitos
+Estructura del Proyecto
+Instrucciones de Ejecución
+Evaluación y Resultados
+Entrenamiento Inicial
+Optimización de Hiperparámetros
+Modelo Cargado
+Imágenes
+# Requisitos
+Para ejecutar este proyecto de manera local, asegúrate de tener instalados los siguientes paquetes:
 
-# Datos Utilizados
-El dataset utilizado incluye las siguientes variables:
+pandas
+xgboost
+scikit-learn
+joblib
+matplotlib
+numpy
+boto3 (si deseas trabajar con S3)
+Puedes instalar las dependencias necesarias utilizando pip:
 
-V_Promedio: Velocidad promedio registrada por los sensores.
-V_Max: Velocidad máxima registrada.
-V_Min: Velocidad mínima registrada.
-P_Promedio: Presión promedio del sistema.
-P_Max: Presión máxima alcanzada.
-P_Min: Presión mínima registrada.
-Los datos han sido replicados y variabilizados para cubrir un período de 30 días, proporcionando suficiente información para entrenar el modelo de manera realista.
+bash
+Copiar código
+pip install pandas xgboost scikit-learn joblib matplotlib numpy boto3
+# Estructura del Proyecto
+bash
+Copiar código
+📦 Proyecto_XGBoost
+ ┣ 📂 data
+ ┃ ┣ 📜 xgboost_ready_data_month.csv      # Dataset con el que se entrena el modelo
+ ┣ 📂 images                             # Carpeta para las imágenes de gráficos generados
+ ┃ ┣ 📜 entrenamiento1.png               # Gráfico predicciones vs reales, sin optimización
+ ┃ ┣ 📜 entrenamiento2hiperparametros.png # Gráfico predicciones vs reales, optimizado
+ ┃ ┣ 📜 modelocargado3.png                # Gráfico predicciones vs reales, modelo cargado
+ ┣ 📜 1_cargar_datos.py                   # Script para cargar y dividir los datos
+ ┣ 📜 2_entrenar_modelo.py                # Script para entrenar el modelo sin optimización
+ ┣ 📜 3_optimizar_modelo.py               # Script para optimizar el modelo con RandomizedSearchCV
+ ┣ 📜 4_cargar_modelo.py                  # Script para cargar el modelo guardado y evaluar
+ ┣ 📜 README.md                           # Este archivo README
+ ┗ 📜 requirements.txt                    # Archivo con las dependencias necesarias
+# Instrucciones de Ejecución
+# Cargar y Dividir Datos
 
-# Funcionamiento del Modelo
-Procesamiento de Datos: Se han eliminado columnas no relevantes y preparado los datos para el entrenamiento. Las variables importantes como velocidad y presión fueron identificadas para construir un modelo robusto.
-Entrenamiento: El modelo utiliza el algoritmo XGBoost, que es conocido por su alta eficiencia y rendimiento en tareas de clasificación y regresión.
+El primer paso es cargar los datos desde el archivo CSV y dividirlos en conjuntos de entrenamiento y prueba. El código se encuentra en 1_cargar_datos.py.
 
-Predicciones: Una vez entrenado, el modelo es capaz de hacer predicciones diarias basadas en nuevas lecturas de las variables operativas. Esto permite anticipar comportamientos anómalos y ajustar los parámetros del sistema.
-Entrenamiento y Evaluación
-El modelo se entrena utilizando los datos generados para un mes, con el fin de capturar patrones diarios. Durante el entrenamiento, se ajustaron los hiperparámetros clave para optimizar el rendimiento del modelo.
+bash
+Copiar código
+python 1_cargar_datos.py
+Los datos se dividen en un 80% para entrenamiento y un 20% para prueba. Se generará la siguiente salida con la cantidad de muestras en cada conjunto:
 
-Métricas de evaluación: El modelo se evalúa utilizando métricas como el error cuadrático medio (MSE) y el coeficiente de determinación (R²) para medir la precisión de las predicciones.
-Uso del Modelo
-Este modelo puede ser implementado en un entorno de producción donde se realicen monitoreos continuos. Al recibir datos en tiempo real, puede predecir y alertar sobre posibles eventos críticos, permitiendo a los ingenieros tomar decisiones informadas y ajustadas a las predicciones.
+yaml
+Copiar código
+Conjunto de entrenamiento: (69096, 6), Conjunto de prueba: (17275, 6)
+# Entrenamiento del Modelo Básico
 
-# Resultados
-Error cuadrático medio (MSE): 217.73657880850624
-Coeficiente de determinación (R2 Score): 0.9406836281338827
-MSE optimizado: 217.73657880850624, R2 optimizado: 0.9406836281338827
+En el archivo 2_entrenar_modelo.py se entrena un modelo básico de XGBoost sin optimización de hiperparámetros.
 
-Error Cuadrático Medio (MSE): 217.53
-MSE mide el promedio del cuadrado de los errores, es decir, cuánto se desvía en promedio el valor predicho del valor real.
-En este caso, un MSE de 217.53 significa que, en promedio, las predicciones del modelo tienen un error cuadrado de aproximadamente 217.53 unidades con respecto a los valores reales de la presión máxima (P_Max).
-Este valor es más realista que el MSE extremadamente bajo que tenías antes, lo cual es un buen indicador de que el modelo ahora está generalizando mejor con los datos variados.
+bash
+Copiar código
+python 2_entrenar_modelo.py
+Después de entrenar el modelo, se genera un gráfico con las predicciones versus los valores reales.
 
-Coeficiente de determinación (R² Score): 0.94
-El R² Score mide qué tan bien el modelo está explicando la variabilidad de los datos. El valor máximo es 1, lo que indica una predicción perfecta.
-Un R² de 0.940 indica que el modelo está explicando aproximadamente el 94% de la variabilidad en los datos. Esto significa que el modelo está capturando la mayor parte de la relación entre las variables predictoras y la variable objetivo (presión máxima), lo que es un gran resultado.
+Gráfico de entrenamiento básico (sin optimización):
+# Optimización de Hiperparámetros
 
-#  ¿Qué significa en términos simples?
-Muy buen ajuste: Un R² de 0.940 es excelente, lo que significa que el modelo está prediciendo con mucha precisión, aunque no de manera perfecta .
-MSE razonable: El MSE de 124.32 indica que los errores de predicción son pequeños en promedio, lo que muestra que el modelo está haciendo un buen trabajo con los datos variados.
+El archivo 3_optimizar_modelo.py contiene la implementación de RandomizedSearchCV para encontrar los mejores hiperparámetros del modelo.
+
+bash
+Copiar código
+python 3_optimizar_modelo.py
+Después de la optimización, se muestra el siguiente gráfico con las predicciones optimizadas.
+
+Gráfico de optimización con hiperparámetros:
+# Guardar y Cargar el Modelo
+
+El modelo optimizado se guarda en un archivo .pkl para su posterior uso. Luego, puedes cargar este modelo utilizando el archivo 4_cargar_modelo.py.
+
+bash
+Copiar código
+python 4_cargar_modelo.py
+Este script cargará el modelo guardado y evaluará su rendimiento nuevamente. Se generará el siguiente gráfico:
+
+Gráfico de predicciones con el modelo cargado:
+# Evaluación y Resultados
+# Entrenamiento Inicial
+Después de entrenar el modelo sin optimización de hiperparámetros, los resultados iniciales son los siguientes:
+
+bash
+Copiar código
+MSE: 719.471593554146
+R²: 0.8039996548861984
+Gráfico:
+# Optimización de Hiperparámetros
+Utilizando RandomizedSearchCV, los mejores hiperparámetros encontrados fueron:
+
+bash
+Copiar código
+Mejores hiperparámetros: {'subsample': 0.9, 'reg_lambda': 1.0, 'reg_alpha': 0.0001, 'n_estimators': 500, 'max_depth': 11, 'learning_rate': 0.08944444444444445, 'gamma': 0.5, 'colsample_bytree': 1.0}
+Los resultados después de la optimización son:
+
+bash
+Copiar código
+MSE optimizado: 217.73657880850624
+R² optimizado: 0.9406836281338827
+Gráfico:
+# Modelo Cargado
+Finalmente, al cargar el modelo optimizado y evaluarlo nuevamente, obtenemos los mismos resultados:
+
+bash
+Copiar código
+MSE cargado: 217.73657880850624
+R² cargado: 0.9406836281338827
+Gráfico:
+# Imágenes
