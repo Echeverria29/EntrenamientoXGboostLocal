@@ -26,19 +26,24 @@ Para ejecutar este proyecto de manera local, asegúrate de tener instalados los 
 
 ## Estructura del Proyecto
 
-📦 Proyecto_XGBoost
- ┣ 📂 data
- ┃ ┣ 📜 xgboost_ready_data_month.csv      # Dataset con el que se entrena el modelo
- ┣ 📂 images                             # Carpeta para las imágenes de gráficos generados
- ┃ ┣ 📜 entrenamiento1.png               # Gráfico predicciones vs reales, sin optimización
- ┃ ┣ 📜 entrenamiento2hiperparametros.png # Gráfico predicciones vs reales, optimizado
- ┃ ┣ 📜 modelocargado3.png                # Gráfico predicciones vs reales, modelo cargado
- ┣ 📜 1_cargar_datos.py                   # Script para cargar y dividir los datos
- ┣ 📜 2_entrenar_modelo.py                # Script para entrenar el modelo sin optimización
- ┣ 📜 3_optimizar_modelo.py               # Script para optimizar el modelo con RandomizedSearchCV
- ┣ 📜 4_cargar_modelo.py                  # Script para cargar el modelo guardado y evaluar
- ┣ 📜 README.md                           # Este archivo README
- ┗ 📜 requirements.txt                    # Archivo con las dependencias necesarias
+## Estructura del Proyecto
+
+El proyecto está organizado de la siguiente manera:
+
+- **Proyecto_XGBoost**
+  - **data/**
+    - `xgboost_ready_data_month.csv` : Dataset con el que se entrena el modelo
+  - **images/**
+    - `entrenamiento1.png` : Gráfico predicciones vs reales, sin optimización
+    - `entrenamiento2hiperparametros.png` : Gráfico predicciones vs reales, optimizado
+    - `modelocargado3.png` : Gráfico predicciones vs reales, modelo cargado
+  - `1_cargar_datos.py` : Script para cargar y dividir los datos
+  - `2_entrenar_modelo.py` : Script para entrenar el modelo sin optimización
+  - `3_optimizar_modelo.py` : Script para optimizar el modelo con RandomizedSearchCV
+  - `4_cargar_modelo.py` : Script para cargar el modelo guardado y evaluar
+  - `README.md` : Este archivo README
+  - `requirements.txt` : Archivo con las dependencias necesarias
+                 # Archivo con las dependencias necesarias
 
 # Instrucciones de Ejecución
 # Cargar y Dividir Datos
