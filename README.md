@@ -1,33 +1,35 @@
 # Proyecto de Entrenamiento de Modelo XGBoost con Optimización de Hiperparámetros
+
 Este proyecto tiene como objetivo entrenar un modelo de XGBoost utilizando datos de sensores (velocidad, presión, etc.), optimizar los hiperparámetros mediante RandomizedSearchCV y evaluar su rendimiento tanto antes como después de la optimización. Además, se guardará y cargará el modelo para su reutilización en futuras predicciones.
 
-# Contenido
-Requisitos
-Estructura del Proyecto
-Instrucciones de Ejecución
-Evaluación y Resultados
-Entrenamiento Inicial
-Optimización de Hiperparámetros
-Modelo Cargado
-Imágenes
-# Requisitos
+## Contenido
+- [Requisitos](#requisitos)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Instrucciones de Ejecución](#instrucciones-de-ejecución)
+- [Evaluación y Resultados](#evaluación-y-resultados)
+  - [Entrenamiento Inicial](#entrenamiento-inicial)
+  - [Optimización de Hiperparámetros](#optimización-de-hiperparámetros)
+  - [Modelo Cargado](#modelo-cargado)
+- [Imágenes](#imágenes)
+
+## Requisitos
+
 Para ejecutar este proyecto de manera local, asegúrate de tener instalados los siguientes paquetes:
 
-pandas
-xgboost
-scikit-learn
-joblib
-matplotlib
-numpy
-boto3 (si deseas trabajar con S3)
+- pandas
+- xgboost
+- scikit-learn
+- joblib
+- matplotlib
+- numpy
+- boto3 (si deseas trabajar con S3)
+
 Puedes instalar las dependencias necesarias utilizando pip:
 
-bash
-Copiar código
+```bash
 pip install pandas xgboost scikit-learn joblib matplotlib numpy boto3
-# Estructura del Proyecto
-bash
-Copiar código
+
+
 📦 Proyecto_XGBoost
  ┣ 📂 data
  ┃ ┣ 📜 xgboost_ready_data_month.csv      # Dataset con el que se entrena el modelo
