@@ -24,11 +24,7 @@ Para ejecutar este proyecto de manera local, asegúrate de tener instalados los 
 - numpy
 - boto3 (si deseas trabajar con S3)
 
-Puedes instalar las dependencias necesarias utilizando pip:
-
-```bash
-pip install pandas xgboost scikit-learn joblib matplotlib numpy boto3
-
+## Estructura del Proyecto
 
 📦 Proyecto_XGBoost
  ┣ 📂 data
@@ -43,6 +39,7 @@ pip install pandas xgboost scikit-learn joblib matplotlib numpy boto3
  ┣ 📜 4_cargar_modelo.py                  # Script para cargar el modelo guardado y evaluar
  ┣ 📜 README.md                           # Este archivo README
  ┗ 📜 requirements.txt                    # Archivo con las dependencias necesarias
+
 # Instrucciones de Ejecución
 # Cargar y Dividir Datos
 
