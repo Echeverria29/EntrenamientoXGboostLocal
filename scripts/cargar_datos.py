@@ -1,4 +1,3 @@
-# 1_cargar_datos.py
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
@@ -19,6 +18,3 @@ def cargar_datos(ruta_csv):
     print(f"Conjunto de entrenamiento: {X_train.shape}, Conjunto de prueba: {X_test.shape}")
     return X_train, X_test, y_train, y_test
 
-# Ejecución
-if __name__ == "__main__":
-    X_train, X_test, y_train, y_test = cargar_datos(r'C:/Users/josue/Desktop/EntrenamientoXGboostLocal/xgboost_ready_data_month.csv')

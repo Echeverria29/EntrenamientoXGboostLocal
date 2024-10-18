@@ -4,11 +4,13 @@ from sklearn.model_selection import RandomizedSearchCV
 import numpy as np
 from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
+
 # Cargar los datos
-X_train, X_test, y_train, y_test = cargar_datos(r'C:/Users/josue/Desktop/EntrenamientoXGboostLocal/xgboost_ready_data_month.csv')
+X_train, X_test, y_train, y_test = cargar_datos(r'TU_URL/data/xgboost_ready_data_month.csv')
 
 # Crear el modelo base
 xgb_model = xgb.XGBRegressor(objective='reg:squarederror', random_state=42)
+
 # Definir una cuadrícula de hiperparámetros
 param_grid = {
     'max_depth': np.arange(3, 12, 2),  
@@ -22,7 +24,16 @@ param_grid = {
 }
 
 # Configurar RandomizedSearchCV
-random_search = RandomizedSearchCV(estimator=xgb_model, param_distributions=param_grid, n_iter=50, scoring='neg_mean_squared_error', cv=5, verbose=1, random_state=42, n_jobs=-1)
+random_search = RandomizedSearchCV(
+    estimator=xgb_model, 
+    param_distributions=param_grid, 
+    n_iter=50, 
+    scoring='neg_mean_squared_error', 
+    cv=5, 
+    verbose=1, 
+    random_state=42, 
+    n_jobs=-1
+)
 
 # Ejecutar búsqueda
 random_search.fit(X_train, y_train)
@@ -40,10 +51,17 @@ r2_optimized = r2_score(y_test, y_pred_optimized)
 print(f"MSE optimizado: {mse_optimized}")
 print(f"R2 optimizado: {r2_optimized}")
 
-# Visualización del modelo optimizado
-plt.scatter(y_test, y_pred_optimized, alpha=0.5)
-plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], color='blue')
-plt.xlabel("Valores Reales")
-plt.ylabel("Predicciones Optimizadas")
-plt.title("Optimización: Predicciones vs Valores Reales")
+# Visualización del modelo optimizado con mejoras
+plt.figure(figsize=(8, 6))
+plt.scatter(y_test, y_pred_optimized, alpha=0.6, edgecolor='k', label='Predicciones Optimizadas')
+plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], color='blue', linestyle='--', label='Valores Ideales')
+
+# Añadir título con R² en porcentaje
+plt.title(f'Optimización: Predicciones vs Valores Reales\nR²: {r2_optimized:.2%}', fontsize=16)
+plt.xlabel("Valores Reales", fontsize=14)
+plt.ylabel("Predicciones Optimizadas", fontsize=14)
+plt.legend()
+plt.grid(True)
+
+# Mostrar el gráfico
 plt.show()
