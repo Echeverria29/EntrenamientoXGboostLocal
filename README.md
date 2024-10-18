@@ -60,7 +60,7 @@ El proyecto está organizado de la siguiente manera:
 - **streamlit_app/**  
   Aplicación Streamlit:  
   - `app_streamlit.py` - Código principal de la app  
-  - `requirements.txt` - Dependencias del entorno para la app  
+  
 
 - **Archivos adicionales:**  
   - `README.md` - Descripción del proyecto y guía de uso  
@@ -81,31 +81,13 @@ Conjunto de entrenamiento: (69096, 6), Conjunto de prueba: (17275, 6)
 
 En el archivo python scripts/entrenar_modelo.py se entrena un modelo básico de XGBoost sin optimización de hiperparámetros.
 
-Después de entrenar el modelo, se genera un gráfico con las predicciones versus los valores reales.
-
-Gráfico de entrenamiento básico (sin optimización):
-![](https://github.com/Echeverria29/EntrenamientoXGboostLocal/blob/main/images/entrenamiento1.PNG)
-
 # Optimización de Hiperparámetros
 
 El archivo python scripts/optimizar_modelo.py contiene la implementación de RandomizedSearchCV para encontrar los mejores hiperparámetros del modelo.
 
-Después de la optimización, se muestra el siguiente gráfico con las predicciones optimizadas.
-
-Gráfico de optimización con hiperparámetros:
-![](https://github.com/Echeverria29/EntrenamientoXGboostLocal/blob/main/images/entrenamiento2hiperparametros.png)
-
-
-
-# Guardar y Cargar el Modelo
+# Guardar el Modelo
 
 El modelo optimizado se guarda en un archivo .pkl para su posterior uso. Luego, puedes cargar este modelo utilizando el archivo python scripts/guardar_modelo.py.
-
-python cargar_modelo.py
-Este script cargará el modelo guardado y evaluará su rendimiento nuevamente. Se generará el siguiente gráfico:
-
-Gráfico de predicciones con el modelo cargado:
-![](https://github.com/Echeverria29/EntrenamientoXGboostLocal/blob/main/images/modelocargado3.png)
 
 # Evaluación y Resultados
 # Entrenamiento Inicial
@@ -115,21 +97,24 @@ Después de entrenar el modelo sin optimización de hiperparámetros, los result
 MSE: 719.471593554146
 R²: 0.8039996548861984
 Gráfico:
+![](https://github.com/Echeverria29/EntrenamientoXGboostLocal/blob/main/images/entrenamiento1.PNG)
+
 # Optimización de Hiperparámetros
 Utilizando RandomizedSearchCV, los mejores hiperparámetros encontrados fueron:
-
 
 Mejores hiperparámetros: {'subsample': 0.9, 'reg_lambda': 1.0, 'reg_alpha': 0.0001, 'n_estimators': 500, 'max_depth': 11, 'learning_rate': 0.08944444444444445, 'gamma': 0.5, 'colsample_bytree': 1.0}
 Los resultados después de la optimización son:
 
-
 MSE optimizado: 217.73657880850624
 R² optimizado: 0.9406836281338827
 Gráfico:
-
+![](https://github.com/Echeverria29/EntrenamientoXGboostLocal/blob/main/images/entrenamiento2hiperparametros.png)
 
 # Modelo Cargado
 Finalmente, al cargar el modelo optimizado y evaluarlo nuevamente, obtenemos los mismos resultados:
 
 MSE cargado: 217.73657880850624
 R² cargado: 0.9406836281338827
+
+Gráfico:
+![](https://github.com/Echeverria29/EntrenamientoXGboostLocal/blob/main/images/evaluar-modelofinal4.png)
