@@ -38,7 +38,7 @@ El proyecto está organizado de la siguiente manera:
   - `xgboost_ready_data.csv`  
   - `xgboost_ready_data_month.csv`  
 
-- **models/**  
+- **models/**  (Genera esta carpeta)
   Modelos entrenados y guardados:  
   - `best_xgboost_model.pkl`  
   - **model_files/** *(opcional)*: Si generas más archivos del modelo
