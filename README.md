@@ -33,7 +33,6 @@ $ pip install -r requirements.txt
 ## Estructura del Proyecto
 
 El proyecto está organizado de la siguiente manera:
-
 Proyecto_XGBoost/
 │
 ├── data/                       # Archivos relacionados con datasets
@@ -58,11 +57,12 @@ Proyecto_XGBoost/
 │
 ├── streamlit_app/              # Aplicación Streamlit
 │   ├── app_streamlit.py        # Código principal de la app
-│       
+│   └── requirements.txt        # Dependencias del entorno para la app
 │
 ├── README.md                   # Descripción del proyecto y guía de uso
 ├── .gitignore                  # Archivos a ignorar en el control de versiones
 └── requirements.txt            # Dependencias generales del proyecto
+
 
 # Instrucciones de Ejecución
 # Cargar y Dividir Datos
@@ -80,7 +80,7 @@ En el archivo python scripts/entrenar_modelo.py se entrena un modelo básico de 
 Después de entrenar el modelo, se genera un gráfico con las predicciones versus los valores reales.
 
 Gráfico de entrenamiento básico (sin optimización):
-![](https://github.com/Echeverria29/EntrenamientoXGboostLocal/blob/main/entrenamiento1.PNG)
+![](https://github.com/Echeverria29/EntrenamientoXGboostLocal/blob/main/images/entrenamiento1.PNG)
 
 # Optimización de Hiperparámetros
 
