@@ -1,8 +1,0 @@
-pip install xgboost   
-pip install matplotlib
-pip install pandas
-pip install boto3 
-pip install scikit-learn
-pip install streamlit
-
-

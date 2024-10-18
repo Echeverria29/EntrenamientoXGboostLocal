@@ -1,0 +1,39 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Entornos virtuales
+venv/
+.env/
+
+# Archivos de configuración de Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Archivos relacionados con Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Dependencias
+node_modules/
+*.egg-info/
+
+# Archivos temporales y de log
+*.log
+*.tmp
+
+# Archivos de compilación
+*.pkl
+*.h5
+
+# Archivos relacionados con S3 y datos sensibles
+*.csv
+*.json
+.s3cfg
+
+# Configuración de VSCode (opcional)
+.vscode/
+
+# Archivos que ya fueron subidos accidentalmente y quieres ignorar en adelante
+# (Por ejemplo, archivos de modelo si no quieres rastrear versiones)
+models/*.pkl
