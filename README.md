@@ -1,6 +1,7 @@
 # Proyecto de Entrenamiento de Modelo XGBoost con Optimización de Hiperparámetros
 
 Este proyecto tiene como objetivo entrenar un modelo de XGBoost utilizando datos de sensores (velocidad, presión, etc.), optimizar los hiperparámetros mediante RandomizedSearchCV y evaluar su rendimiento tanto antes como después de la optimización. Además, se guardará y cargará el modelo para su reutilización en futuras predicciones.
+![](https://github.com/Echeverria29/EntrenamientoXGboostLocal/blob/main/images/pixelcut-export.png)
 
 ## Contenido
 - [Requisitos](#requisitos)
